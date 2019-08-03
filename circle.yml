@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    working_directy: ~/app
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+    steps:
+      - checkout
+      - restore_cache:
+          key: app-{{ checksum "pom.xml" }}
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: app-{{ checksum "pom.xml" }}
+      - run: |
+          mvn package
+          mvn surefire-report:report
+      - store_test_results:
+          path: target/site
+      - store_artifacts:
+          path: target/*.jar
