@@ -20,13 +20,12 @@ jobs:
 
       - run: |
           mvn package
-          mvn surefire-report:report
 
           mkdir jar
           cp target/*.jar jar
 
       - store_test_results:
-          path: target/site
+          path: target/surefire-reports
 
       - store_artifacts:
           path: jar

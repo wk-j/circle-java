@@ -1,5 +1,6 @@
 package wk;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ProgramTests {
@@ -13,5 +14,6 @@ public class ProgramTests {
 
     @Test
     public void c() {
+        Assert.assertEquals(true, true);
     }
 }
