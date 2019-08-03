@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directy: ~/app
+    working_directory: ~/app
     docker:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
